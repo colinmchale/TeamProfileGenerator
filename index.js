@@ -2,37 +2,58 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const generateHTML = require('./utils/generateHTML');
 
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern'); 
 
-// const questions = () => {
-//     return inquirer.prompt([
-//         {
-//           type: 'input',
-//           message: "Please enter a Title:",
-//           name: 'title',
-//           validate: nameInput => {
-//             if (nameInput) {
-//                 return true;
-//             } else {
-//                 console.log('Please enter your project title!');
-//                 return false; 
-//             }
-//           }
-//         },
-//         {
-//           type: 'input',
-//           message:  "What was your motivation for the application?",
-//           name: 'motivation',
-//           validate: nameInput => {
-//             if (nameInput) {
-//                 return true;
-//             } else {
-//                 console.log('Please enter the reason for creating this application!');
-//                 return false; 
-//             }
-//           }
-//         },
-//     ])
-// };
+
+
+const managerQuestions = () => {
+    return inquirer.prompt([
+        {
+          type: 'input',
+          message: `Please enter the Manager's name:`,
+          name: 'name',
+          validate: nameInput => {
+            if (nameInput) {
+                return true;
+            } else {
+                console.log(`Please enter the Manager's name!`);
+                return false; 
+            }
+          }
+        },
+        {
+          type: 'input',
+          message:  `Please enter the Manager's ID#:`,
+          name: 'id',
+          validate: nameInput => {
+            if (isNaN(nameInput)) {
+                console.log(`Please enter the Manager's ID!`);
+                return false;
+            } else {
+                return true;
+            }
+          }
+        },
+
+
+        
+        {
+            type: 'input',
+            message: `Please enter the Manager's office number`,
+            name: 'officeNum',
+            validate: nameInput => {
+                if  (isNaN(nameInput)) {
+                    console.log ('Please enter an office number!')
+                    return false; 
+                } else {
+                    return true;
+                }
+            }
+        }
+    ])
+};
 
 
 // TODO: Create a function to write README file
