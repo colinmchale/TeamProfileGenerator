@@ -3,36 +3,36 @@ const fs = require('fs');
 const generateHTML = require('./utils/generateHTML');
 
 
-const questions = () => {
-    return inquirer.prompt([
-        {
-          type: 'input',
-          message: "Please enter a Title:",
-          name: 'title',
-          validate: nameInput => {
-            if (nameInput) {
-                return true;
-            } else {
-                console.log('Please enter your project title!');
-                return false; 
-            }
-          }
-        },
-        {
-          type: 'input',
-          message:  "What was your motivation for the application?",
-          name: 'motivation',
-          validate: nameInput => {
-            if (nameInput) {
-                return true;
-            } else {
-                console.log('Please enter the reason for creating this application!');
-                return false; 
-            }
-          }
-        },
-    ])
-};
+// const questions = () => {
+//     return inquirer.prompt([
+//         {
+//           type: 'input',
+//           message: "Please enter a Title:",
+//           name: 'title',
+//           validate: nameInput => {
+//             if (nameInput) {
+//                 return true;
+//             } else {
+//                 console.log('Please enter your project title!');
+//                 return false; 
+//             }
+//           }
+//         },
+//         {
+//           type: 'input',
+//           message:  "What was your motivation for the application?",
+//           name: 'motivation',
+//           validate: nameInput => {
+//             if (nameInput) {
+//                 return true;
+//             } else {
+//                 console.log('Please enter the reason for creating this application!');
+//                 return false; 
+//             }
+//           }
+//         },
+//     ])
+// };
 
 
 // TODO: Create a function to write README file
