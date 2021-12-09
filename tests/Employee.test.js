@@ -9,9 +9,9 @@ describe('Employee', () => {
             // Act 
             let testEmployee = new Employee('Jason', 1, 'jason@gmail.com')
             // Assert 
-            expect(testEmployee.name).toBe("Jason")
+            expect(testEmployee.name).toBe('Jason')
             expect(testEmployee.id).toEqual(1)
-            expect(testEmployee.email).toBe("jason@gmail.com")
+            expect(testEmployee.email).toBe('jason@gmail.com')
         })
     });
 
@@ -22,7 +22,7 @@ describe('Employee', () => {
             // Act
             let email = testEmployee.getEmail()
             // Assert 
-            expect(email).toBe("jason@gmail.com")
+            expect(email).toBe('jason@gmail.com')
         })
     });
 
@@ -44,15 +44,18 @@ describe('Employee', () => {
             // Act 
             let name = testEmployee.getName()
             // Assert 
-            expect(name).toBe("Jason")
+            expect(name).toBe('Jason')
         })
     });
 
     describe('getRole', () => {
-        it('should ', () => {
+        it('should return the correct role', () => {
             // Arrange 
+            let testEmployee = new Employee('Jason', 1, 'jason@gmail.com')
             // Act 
+            let role = testEmployee.getRole()
             // Assert 
+            expect(role).toBe('Employee')
         })
     });
 

@@ -21,16 +21,12 @@ class Employee {
     getRole() {
         return "Employee";
     }
+
 // * `id`
-
 // * `email`
-
 // * `getName()`
-
 // * `getId()`
-
 // * `getEmail()`
-
 // * `getRole()`&mdash;returns `'Employee'`
 }
 
