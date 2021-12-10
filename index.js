@@ -67,8 +67,7 @@ const managerQuestions = () => {
   .then(managerInput => {
       const  { name, id, email, officeNum } = managerInput; 
       const manager = new Manager (name, id, email, officeNum);
-      teamList.push(manager); 
-      console.log(manager); 
+      teamList.push(manager);
   })
 };
 
