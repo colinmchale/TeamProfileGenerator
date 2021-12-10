@@ -17,7 +17,7 @@ Instead of hard coding an HTML page for each team everytime there is a new proje
 [Questions](#questions)  
 
 ## Installation  
-To run this application you will need to enter 'npm i' to install the inquirer, jest, and fs packages from node.
+To run this application you will need to enter 'npm i' to install the inquirer and fs packages from node.
 
 ## Usage  
 ![Screenshot of App](./img/TeamPRofile.png)
