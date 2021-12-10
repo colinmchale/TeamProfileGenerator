@@ -6,7 +6,7 @@ const generateManager = function (manager) {
         <div class="card h-100 text-white bg-primary">  
             <div class="card-header role"><h4>${manager.name}</h4></div>  
             <div class="card-body">  
-                <i class="bi bi-briefcase-fill"></i><h5 class="card-title">Manager</h5>  
+                <h5 class="card-title">Manager</h5>  
                 <p class="card-text id">ID: ${manager.id}</p>  
                 <p class="card-text email"><a href="mailto:${manager.email}">${manager.email}</a></p>  
                 <p class="card-text office">Office Number: ${manager.officeNum}</p>  
@@ -21,7 +21,7 @@ const generateEngineer = function (engineer) {
         <div class="card h-100 text-white bg-success">  
             <div class="card-header role"><h4>${engineer.name}</h4></div>  
             <div class="card-body">  
-                <i class="bi bi-puzzle-fill"></i><h5 class="card-title">Engineer</h5>  
+                <h5 class="card-title">Engineer</h5>  
                 <p class="card-text id">ID: ${engineer.id}</p>  
                 <p class="card-text email"><a href="mailto:${engineer.email}">${engineer.email}</a></p>  
                 <p class="card-text github">Github: <a href="https://github.com/${engineer.github}" target="_blank">${engineer.github}</a></p>  
@@ -36,7 +36,7 @@ const generateIntern = function (intern) {
         <div class="card h-100 text-white bg-secondary">  
             <div class="card-header role"><h4>${intern.name}</h4></div>  
             <div class="card-body">  
-                <i class="bi bi-mortarboard-fill"></i><h5 class="card-title">Intern</h5>  
+                <h5 class="card-title">Intern</h5>  
                 <p class="card-text id">ID: ${intern.id}</p>  
                 <p class="card-text email"><a href="mailto:${intern.email}">${intern.email}</a></p>  
                 <p class="card-text school">School: ${intern.school}</p>  
@@ -80,7 +80,6 @@ generateHTML = (data) => {
     const generateTeam = generateTeamPage(employeeCards); 
     return generateTeam;
 }
-
 
   //create a function to generate markdown for HTML
   function generateTeamPage(employeeCards) {
