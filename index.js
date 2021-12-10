@@ -2,9 +2,9 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const generateHTML = require('./utils/generateHTML');
 
-const Manager = require('./lib/Manager');
-const Engineer = require('./lib/Engineer');
-const Intern = require('./lib/Intern'); 
+const Manager = require('./library/Manager');
+const Engineer = require('./library/Engineer');
+const Intern = require('./library/Intern'); 
 
 const teamList = [];
 
@@ -18,7 +18,7 @@ const managerQuestions = () => {
         if (nameInput) {
           return true;
         } else {
-          console.log(`Please enter the Manager's name!`);
+          console.log(`Please enter a name!`);
           return false; 
         }
       }
@@ -29,10 +29,10 @@ const managerQuestions = () => {
       name: 'id',
       validate: nameInput => {
         if (isNaN(nameInput)) {
-            console.log(`Please enter the Manager's ID!`);
-            return false;
+          console.log(`Please enter an ID!`);
+          return false;
         } else {
-            return true;
+          return true;
         }
       }
     },
@@ -40,12 +40,13 @@ const managerQuestions = () => {
       type: 'input',
       message:  `Please enter the Manager's e-mail:`,
       name: 'email',
-      validate: nameInput => {
-        if (isNaN(nameInput)) {
-            console.log(`Please enter the Manager's e-mail!`);
-            return false;
+      validate: email => {
+        valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
+        if (valid) {
+          return true;
         } else {
-            return true;
+          console.log ('Please enter an email!')
+          return false; 
         }
       }
     },
@@ -55,10 +56,10 @@ const managerQuestions = () => {
       name: 'officeNum',
       validate: nameInput => {
           if  (isNaN(nameInput)) {
-              console.log ('Please enter an office number!')
-              return false; 
+            console.log ('Please enter an office number!')
+            return false; 
           } else {
-              return true;
+            return true;
           }
       }
     }
@@ -77,7 +78,7 @@ const employeeQuestions = () => {
       type: 'list',
       message: `Please select the Employee's role:`,
       name: 'role',
-      list: ['Engineer', 'Intern']
+      choices: ['Engineer', 'Intern']
     },
     {
       type: 'input',
@@ -87,7 +88,7 @@ const employeeQuestions = () => {
         if (nameInput) {
           return true;
         } else {
-          console.log(`Please enter the Employee's name!`);
+          console.log(`Please enter a name!`);
           return false; 
         }
       }
@@ -98,10 +99,10 @@ const employeeQuestions = () => {
       name: 'id',
       validate: nameInput => {
         if (isNaN(nameInput)) {
-            console.log(`Please enter the Employee's ID!`);
-            return false;
+          console.log(`Please enter an ID!`);
+          return false;
         } else {
-            return true;
+          return true;
         }
       }
     },
@@ -109,12 +110,13 @@ const employeeQuestions = () => {
       type: 'input',
       message:  `Please enter the Employee's e-mail:`,
       name: 'email',
-      validate: nameInput => {
-        if (isNaN(nameInput)) {
-            console.log(`Please enter the Employee's e-mail!`);
-            return false;
+      validate: email => {
+        valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
+        if (valid) {
+          return true;
         } else {
-            return true;
+          console.log ('Please enter an email!')
+          return false;
         }
       }
     },
@@ -124,11 +126,11 @@ const employeeQuestions = () => {
       name: 'github',
       when: (input) => input.role === 'Engineer',
       validate: nameInput => {
-        if (isNaN(nameInput)) {
-            console.log(`Please enter the Employee's github username!`);
-            return false;
+        if (nameInput) {
+          return true;
         } else {
-            return true;
+          console.log(`Please enter a github username!`);
+          return false;
         }
       }
     },
@@ -138,20 +140,39 @@ const employeeQuestions = () => {
       name: 'school',
       when: (input) => input.role === 'Intern',
       validate: nameInput => {
-        if (isNaN(nameInput)) {
-            console.log(`Please enter the Intern's school!`);
-            return false;
+        if (nameInput) {
+          return true;
         } else {
-            return true;
+          console.log(`Please enter a school!`);
+          return false;
         }
       }
+    },
+    {
+      type: 'confirm',
+      message: 'Would you like to add more team members?',
+      name: 'confirmAdditional',
+      default: false
     }
   ])
   .then(employeeInput => {
-    let 
+    let { name, id, email, role, github, school, confirmAdditional } = employeeInput;
+    let employee;
 
+    if (role === 'Engineer') {
+      employee = new Engineer (name, id, email, github)
+    } else {
+      employee = new Intern (name, id, email, school)
+    };
+
+    teamList.push(employee);
+
+    if (confirmAdditional) {
+      return employeeQuestions(teamList);
+    } else {
+      return teamList;
+    }
   })
-  
 };
 
 // TODO: Create a function to write README file
