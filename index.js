@@ -1,3 +1,4 @@
+// requiring packages to be used later on page
 const inquirer = require('inquirer');
 const fs = require('fs');
 const generateHTML = require('./utils/generateHTML');
@@ -8,6 +9,7 @@ const Intern = require('./library/Intern');
 
 const teamList = [];
 
+// asking the user questions
 const managerQuestions = () => {
   return inquirer.prompt([
     {
@@ -64,6 +66,7 @@ const managerQuestions = () => {
       }
     }
   ])
+  // submitting the input for manager questions into manager class
   .then(managerInput => {
       const  { name, id, email, officeNum } = managerInput; 
       const manager = new Manager (name, id, email, officeNum);
@@ -71,6 +74,7 @@ const managerQuestions = () => {
   })
 };
 
+// questions for additional employee, will run for each new employee after manager
 const employeeQuestions = () => {
   return inquirer.prompt([
     {
@@ -120,6 +124,7 @@ const employeeQuestions = () => {
       }
     },
     {
+      // will only be asked if the new employee is an Engineer
       type: 'input',
       message:  `Please enter the Employee's github username:`,
       name: 'github',
@@ -134,6 +139,7 @@ const employeeQuestions = () => {
       }
     },
     {
+      // will only be asked if the new employee is an Intern
       type: 'input',
       message:  `Please enter the Intern's school:`,
       name: 'school',
@@ -166,6 +172,7 @@ const employeeQuestions = () => {
 
     teamList.push(employee);
 
+    // will loop back through employee questions if user chooses to add another employee
     if (confirmAdditional) {
       return employeeQuestions(teamList);
     } else {
@@ -174,7 +181,7 @@ const employeeQuestions = () => {
   })
 };
 
-// TODO: Create a function to write README file
+//Create a function to write HTML file
 function writeToFile(data) {
     fs.writeFile("./output/index.html", data, err => {
         if (err) {
@@ -185,14 +192,13 @@ function writeToFile(data) {
 };
 
 function init() {
-
     managerQuestions()
     // Get the answers from user 
     .then(employeeQuestions)
     .then(teamList => {
         return generateHTML(teamList);
     })
-    // Use data to display on the ReadMe 
+    // Use data to display on the HTML 
     .then(data => {
         return writeToFile(data);
     })

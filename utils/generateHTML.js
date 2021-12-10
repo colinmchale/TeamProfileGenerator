@@ -1,5 +1,5 @@
 
-
+// function to create card html layout for manager
 const generateManager = function (manager) {
     return `
     <div class="col-4 mt-4">  
@@ -14,7 +14,7 @@ const generateManager = function (manager) {
         </div>  
     </div>  `
 }
-
+// function to create card html layout for engineer
 const generateEngineer = function (engineer) {
     return `
     <div class="col-4 mt-4">  
@@ -29,7 +29,7 @@ const generateEngineer = function (engineer) {
         </div>  
     </div>`  ;
 }
-
+// function to create card html layout for intern
 const generateIntern = function (intern) {
     return `
     <div class="col-4 mt-4">  
@@ -54,26 +54,26 @@ generateHTML = (data) => {
         const employee = data[i];
         const role = employee.getRole(); 
 
-        // call manager function
+        // call manager function if manager
         if (role === 'Manager') {
             const managerCard = generateManager(employee);
             teamPage.push(managerCard);
         }
 
-        // call engineer function
+        // call engineer function if engineer
         if (role === 'Engineer') {
             const engineerCard = generateEngineer(employee);
             teamPage.push(engineerCard);
         }
 
-        // call intern function 
+        // call intern function if intern
         if (role === 'Intern') {
             const internCard = generateIntern(employee);
             teamPage.push(internCard);
         }
     }
 
-    // joining cards
+    // join all cards into one array
     const employeeCards = teamPage.join('')
 
     // return to generated page
@@ -82,7 +82,7 @@ generateHTML = (data) => {
 }
 
 
-  //Create a function to generate markdown for HTML
+  //create a function to generate markdown for HTML
   function generateTeamPage(employeeCards) {
     return `<!DOCTYPE html>  
 
