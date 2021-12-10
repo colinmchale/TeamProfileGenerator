@@ -21,6 +21,7 @@ To run this application you will need to enter 'npm i' to install the inquirer, 
 
 ## Usage  
 ![Screenshot of App](./img/TeamPRofile.png)
+Link to Video Recording of the application being used: [Click Here](https://drive.google.com/file/d/1XN6bJrGSoWQA54oOzS_FUVA58JaZWJyv/view)  
 This was built for project managers in mind that want a clear way to organie/keep track of a team. Available to all users.
 
 ## License 
