@@ -2,9 +2,8 @@
 ![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)
 
 ## Description  
-This application helps dsiplay all members of a team on one page along with a few role specific details.  
+This application helps display all members of a team on one page along with a few role specific details which can include a mix of an employee's email, github, or current school.  
 Instead of hard coding an HTML page for each team everytime there is a new project, this generator can quickly render a group of workers from a user's input.  
-  
 
 
 ## Table of Contents  
@@ -20,9 +19,9 @@ Instead of hard coding an HTML page for each team everytime there is a new proje
 To run this application you will need to enter 'npm i' to install the inquirer and fs packages from node.
 
 ## Usage  
-![Screenshot of App](./img/TeamPRofile.png)
+![Screenshot of App](./img/TeamProfile.png)  
 Link to Video Recording of the application being used: [Click Here](https://drive.google.com/file/d/1XN6bJrGSoWQA54oOzS_FUVA58JaZWJyv/view)  
-This was built for project managers in mind that want a clear way to organize/keep track of a team. Available to all users.
+This was built for project managers in mind that want a clear way to organize/keep track of a team. Available to all users. Utilizes Node.js and Inquirer.
 
 ## License 
 Unlicense
